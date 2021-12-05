@@ -37,7 +37,6 @@ int fib_rec_int(int n, std::shared_ptr<int> pointer)
     }
 }
 
-
 long fib_rec_long(int n, std::shared_ptr<int> pointer)
 {
     try
@@ -105,57 +104,22 @@ int main()
     int result_fib_rec_int = fib_rec_int(first_chosen_numer, shared);
     long result_fib_rec_long = fib_rec_long(second_chosen_numer, shared);
     int result_fib_itr_int = fib_itr_int(third_chosen_numer, shared);
-    std::cout << "result_fib_rec_int : " << result_fib_rec_int << std::endl;
-    std::cout << "result_fib_rec_long : " << result_fib_rec_long << std::endl;
-    std::cout << "result_fib_itr_int : " << result_fib_itr_int << std::endl;
 
-    if (result_fib_rec_int != (int)result_fib_rec_long || result_fib_rec_int != result_fib_itr_int || result_fib_itr_int != (int)result_fib_rec_long)
+    if (result_fib_rec_int == (int)result_fib_rec_long)
     {
-        std::cout << "Data is not correct" << std::endl;
+        std::cout << "Result : " << result_fib_rec_int << std::endl;
+    }
+    else if (result_fib_rec_int == result_fib_itr_int)
+    {
+        std::cout << "Result : " << result_fib_rec_int << std::endl;
+    }
+    else if ((int)result_fib_rec_long == result_fib_itr_int)
+    {
+        std::cout << "Result : " << result_fib_rec_long << std::endl;
     }
     else
     {
-        int result = 0;
-        bool first_check = false;
-        bool second_check = false;
-        bool third_check = false;
-
-        if (result_fib_rec_int == (int)result_fib_rec_long)
-        {
-            result += 1;
-            first_check = true;
-        }
-
-        if (result_fib_rec_int == result_fib_itr_int)
-        {
-            result += 1;
-            second_check = true;
-        }
-
-        if ((int)result_fib_rec_long == result_fib_itr_int)
-        {
-            result += 1;
-            third_check = true;
-        }
-
-        if (result >= 2)
-        {
-            if (first_check && second_check)
-            {
-                std::cout << "Result : " << result_fib_rec_int << std::endl;
-            }
-            else
-            {
-                if (first_check && third_check)
-                {
-                    std::cout << "Result : " << result_fib_rec_long << std::endl;
-                }
-                else
-                {
-                    std::cout << "Result : " << result_fib_itr_int << std::endl;
-                }
-            }
-        }
+        std::cout << "Brak poprawnosci danych" << std::endl;
     }
 
     return 0;
